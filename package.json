@@ -14,6 +14,8 @@
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "mongoose": "^4.13.14",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0",
     "pug": "^2.0.0-beta2"
   },
   "license": "MIT"
