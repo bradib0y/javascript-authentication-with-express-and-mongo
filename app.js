@@ -5,6 +5,7 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var app = express();
 
+var c = 0;
 
 // mongoose connecting to mongodb
 mongoose.connect("mongodb://localhost:27017/bookworm");
@@ -24,6 +25,9 @@ app.use(session({
 
 // make user ID available in templates
 app.use(function (req, res, next) {
+  //
+  c++;
+  console.log("// make user ID available in templates, " + c);
   res.locals.currentUser = req.session.userId;
   next();
 });
@@ -53,9 +57,10 @@ app.use(function(req, res, next) {
 // error handler,
 // define as the last app.use callback
 app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
+  res.status(err.status || 500);  
+  res.locals.statusCode = err.status || 500;
+  res.render('error', {    
+    message: err.message,    
     error: {}
   });
 });

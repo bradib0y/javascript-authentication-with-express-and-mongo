@@ -29,6 +29,8 @@ a:hover {
 	color: rgba(255,255,255, .6);
 }
 
+
+
 /* Modifier Styles */
 
 .nav-items .nav-link {
@@ -114,7 +116,23 @@ a:hover {
   margin-top: 30px;
 }
 
+/* Error page styles */
+
+.errorStatus {	
+	font-size: 38vw;
+	color: rgba(243, 58, 82, 0.24);
+	z-index: -1;
+	float: right;
+	display: none;
+}
+
 /* Media Queries */
+
+@media (min-width: 770px) {
+	.errorStatus{
+	display: initial;
+	}
+}
 
 @media (min-width: 0) and (max-width: 47em) {
 	.navbar {
@@ -153,6 +171,12 @@ a:hover {
 	}
 	.main {
 		padding-top: 8rem;
+	}
+}
+
+@media (min-width: 1299px){
+	.errorStatus{
+		font-size: 22vw;
 	}
 }
 
