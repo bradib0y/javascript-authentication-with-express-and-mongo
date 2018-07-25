@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var app = express();
+const passport = require("passport");
 
 var c = 0;
 
@@ -13,6 +14,9 @@ var db = mongoose.connection;
 // mongo error
 db.on('error', console.error.bind(console, 'connection error:'));
 
+function hello(req, res, next) {console.log("Hello"); return next();}
+
+app.get("/asd", hello, hello, hello, hello, hello, hello, hello);
 // use sessions for tracking logins
 app.use(session({
   secret: 'treehouse loves you',
@@ -22,6 +26,10 @@ app.use(session({
     mongooseConnection: db
   })
 }));
+
+// passport initialization
+app.use(passport.initialize());
+app.use(passport.session());
 
 // make user ID available in templates
 app.use(function (req, res, next) {
